@@ -49,3 +49,51 @@ void INPUT()
 	freopen("C:/Users/arvind/Desktop/Current/output.txt", "w", stdout);
 #endif
 }
+
+
+
+
+
+
+
+function getTable(head_arr, tbody) {
+	var res = new Array();
+
+	//add table heads
+	var HeadRow = new Array();
+	for (let i = 0; i < head_arr.length; i++) {
+		var element = {text: head_arr[i], style: 'tableHeader'};
+		HeadRow.push(element);
+
+	}
+
+
+
+
+
+
+
+
+
+	res.push(HeadRow);
+	//head row added
+
+	//adding rows (data)
+	for (let index = 0; index < tbody.length; index++) {
+		var row = new Array();
+		for (let i = 0; i < tbody[0].length; i++) {
+			row.push({
+				//colspan: 1,
+text: tbody[index][i], style: 'defaultStyle'
+			});
+		}
+
+		//add ith row
+		res.push(row);
+	}
+
+
+	//return table with heads
+	return res;
+
+}
