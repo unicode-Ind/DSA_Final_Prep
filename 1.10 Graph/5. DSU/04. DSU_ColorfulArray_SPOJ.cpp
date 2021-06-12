@@ -8,7 +8,8 @@ using namespace std;
 const double PI = acos(-1);
 void INPUT();
 
-int *parent;
+//int *parent;
+vector<int> parent;
 
 int find(int i) {
 	// if (parent[i] != i) {
@@ -39,16 +40,20 @@ int main()
 	int n, q;
 	cin >> n >> q;
 
-	parent = new int[n + 5];
+	//parent = new int[n + 5];
 	int l[q], r[q], c[q];
 	int res[n + 5] = {};
 
-	for (int i = 0; i < n + 5; ++i)
-	{
-		parent[i] = i;
+	// for (int i = 0; i < n + 5; ++i)
+	// {
+	// 	parent[i] = i;
 
-		//why not -1 => we can, but we need to modify in unite function this => (parent[x] = parent[y] = max(x, y);) accordingly
-	}
+	// 	//why not -1 => we can, but we need to modify in unite function this => (parent[x] = parent[y] = max(x, y);) accordingly
+	// }
+
+	parent.resize(n + 2);
+	iota(parent.begin(), parent.end(), 0);
+	// fills 0,1,2,3 .......
 
 
 	for (int i = 0; i < q; ++i)
