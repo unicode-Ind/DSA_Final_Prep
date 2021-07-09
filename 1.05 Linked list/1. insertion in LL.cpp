@@ -44,10 +44,10 @@ int len(node *head)
 void insertAtTail(node *&head,int data)
 {
     if(head==nullptr)
-        {
-            head=new node(data);
-            return;
-        }
+    {
+        head=new node(data);
+        return;
+    }
     node *tail=head;
     while(tail->next!=nullptr)
         tail=tail->next;

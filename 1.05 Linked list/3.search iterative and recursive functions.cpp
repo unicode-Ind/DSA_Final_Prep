@@ -40,6 +40,8 @@ bool SearchRec(node *head,int key)
         return true;
     else
         return (SearchRec(head->next,key));
+
+    //return head==nullptr ? false: head->data == key || SearchRec(head->next,data);
 }
 
 bool SearchItr(node *head,int key)

@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -94,6 +93,50 @@ node *mergeSortedLL(node *a,node *b)
        return c;
 
 }
+
+/*
+Iterative
+
+ListNode mergeTwoSortedLists(ListNode A, ListNode B)
+{
+    
+    if(A == NULL)
+        return B
+    if(B == NULL)
+        return A
+    ListNode output = NULL   
+    if(A.val < B.val)
+    {
+        output = A
+        A = A.next
+    }
+    else
+    {
+        output = B
+        B = B.next
+    }
+    ListNode curr = output
+    while(A != NULL && B!= NULL)
+    {
+        if(A.val > B.val)
+        {
+            curr.next = B
+            B = B.next
+        }
+        else
+        {
+            curr.next = A
+            A = A.next
+        }
+        curr = curr.next
+    }
+    if(A!= NULL)
+        curr.next = A
+   if(B!= NULL)
+        curr.next = B
+   return output
+}
+*/
 
 int main()
 {

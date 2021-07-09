@@ -1,4 +1,6 @@
 /*
+https://leetcode.com/problems/asteroid-collision/
+
 The fierce battle of Lord Sri Ram and Ravan is going on. They both are constantly shooting arrows towards each other not necessarily turn by turn. It means that they can shoot multiple arrows at a time.
 
 You are given an array of integers. Here the sign of the integer represents the direction of the arrow, '+' : right and '-' : left. The absolute value represents the size of the arrow. A collisions will take place if an arrow is moving towards right and the next arrow moves in the left direction. At each collision the arrow with larger size destroys the smaller sized arrow and continues the path. If both the arrows have same size then they both are destroyed.

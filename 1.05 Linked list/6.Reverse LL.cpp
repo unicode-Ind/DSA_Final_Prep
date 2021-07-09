@@ -96,11 +96,22 @@ node* ReverseRec(node *&head)
         return head;
 
     //Rec case
-    node *tempHead=ReverseRec(head->next);
-    node *current=head;
-    current->next->next=current;
-    current->next=nullptr;
-    return tempHead;
+    node *rest=ReverseRec(head->next);
+    /*
+    head ------> (reversed)
+    head is pointing to last of reversed
+    set last->next = head
+    last is still in head->next
+
+    => (last)->next = head
+    => head->next->next = head
+
+    and then head->next = null // as this will be new last node
+    */
+    //node *current=head;
+    head->next->next=head;
+    head->next=nullptr;
+    return rest;
 }
 
 int main()
@@ -109,7 +120,7 @@ int main()
     //approach 1 : swap(reverse) data : costly, not recomended e.g. when we have say 100 data elements (LL of structure)
     // copying huge amount of data became inefficient , also traversal count is quite hight
 
-    //approach 2: reverse pointer (better, efficent and easy) : iteration ot recursion(rec:interview ques)
+    //approach 2: reverse pointer (better, efficent and easy) : iteration or recursion(rec:interview ques)
     cin>>start1;
     cout<<start1;
 
