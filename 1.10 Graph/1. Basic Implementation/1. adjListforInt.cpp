@@ -1,6 +1,6 @@
 /*
-    we can implement this usinf array of list OR a hash map
-    here we will use araay of list
+    we can implement this using array of list OR a hash map
+    here we will use array of list
 */
 
 #include<iostream>

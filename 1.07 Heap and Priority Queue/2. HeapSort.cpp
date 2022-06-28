@@ -1,82 +1,96 @@
 #include <bits/stdc++.h>
+#include "../customIO.h"
 using namespace std;
 
-#define ll long long
-#define ar array
-#define fo(i,n) for(int i=0;i<n;i++)
-#define fok(i,k,n) for(i=k;i<n;i++)
-#define vint vector<int>
-#define vfloat vector<float>
-#define pb push_back
+/*
+	MAX HEAP
+*/
 
-const long long mod=1e9;
-#define PI 3.14159
-//const double PI=acos(-1); 
+class HeapSort{
+	vector<int> v;
+	int heapSize;
 
-void createMaxHeap_optimised(vector<int> &v);// O(N)
-void downHeapyfy(vector<int> &v,int idx);    // O(logN)
-void heapSort(vector<int> &v);               //O(NlogN)
-int heapSize;
+	void downHeapyfy(int idx){
+
+		int leftidx = idx*2+1;
+		int rightidx= idx*2+2;
+
+		int largestidx = idx;
+
+		while(leftidx < heapSize){
+			if(v[leftidx]>v[largestidx])
+				largestidx=leftidx;
+
+			if(rightidx < heapSize && v[rightidx]>v[largestidx])
+				largestidx=rightidx;
+
+			if(largestidx == idx){
+				break;
+			}else{
+				swap(v[idx],v[largestidx]);
+				idx = largestidx;
+				leftidx=2*idx+1;
+				rightidx=2*idx+2;
+			}
+		}
+	}
+
+	void createMaxHeap_optimised(vector<int> nums){
+		//createMaxHeap_optimised
+		this->v = nums;
+		
+		//logic
+		int lastIdx = v.size()-1;
+		int start = (lastIdx-1)/2;
+
+		for(int i=start;~i;i--){
+			downHeapyfy(i);
+		}
+
+		print();
+
+	}
+
+public:
+
+	HeapSort(vector<int> nums){
+		//createMaxHeap_optimised(nums);
+		heapSize = nums.size();
+		//int lastIdx = heapSize-1;
+
+		
+		//logic: craete heap
+		v = nums;
+		int lastIdx = v.size()-1;
+		int start = (lastIdx-1)/2;
+
+		for(int i=start;~i;i--){
+			downHeapyfy(i);
+		}
+
+		// deletion
+
+		while(heapSize > 1){
+			swap(v[0],v[heapSize-1]);
+			heapSize--;
+			downHeapyfy(0);
+		}
+
+	}
+
+	void print(){
+		for(int i:v) cout<<i<<" ";
+	}
+
+};
+
+
 
 int main(int argc, char const *argv[])
 {
-	vector<int> heap;
-	int n,input;
-	cin>>n;
-
-	fo(i,n){
-		cin>>input;
-		heap.pb(input);
-	}
-
-	heapSort(heap); 
-
-	for(int i:heap)
-		cout<<i<<" ";	
-	return 0;	
-}
-
-void createMaxHeap_optimised(vector<int> &v){
-
-	cout<<"in create\n";
-	for(int i=v.size()-1;~i;i--){
-		cout<<"in create loop :"<<i<<"\n";
-		downHeapyfy(v,i);
-	}
-	cout<<"out create loop"<<"\n";
-}
-
-void downHeapyfy(vector<int> &v,int idx){
-	int leftidx=2*idx+1;
-	int rightidx=2*idx+2;
-	if(leftidx>= heapSize && rightidx >=heapSize)
-		return;
-
-	int largestidx=idx;
-	if(leftidx < heapSize && v[leftidx]>v[largestidx])
-		largestidx=leftidx;
-	if(rightidx < heapSize && v[rightidx]>v[largestidx])
-		largestidx=rightidx;
-
-	if(largestidx==idx) 
-		return;
-
-	swap(idx,largestidx);
-
-	cout<<"inside loop downHeapyfy :"<<idx<<endl;
-	downHeapyfy(v,largestidx);
-}
-
-void heapSort(vector<int> &v){
-	heapSize=v.size();
-	createMaxHeap_optimised(v);
-
-	cout<<"created"<<"\n";
+	INPUT();
+	HeapSort h(vector<int>{10,75,15,13,14,-1}); //createMaxHeap_optimised
+	h.print();
 	
-	for (int i = v.size()-1;i>0; --i)
-	{
-		swap(v[0],v[i]);
-		heapSize--;
-		downHeapyfy(v,0);
-	}
+	return 0;	
 }

@@ -31,6 +31,8 @@ int main() {
     cout<<"Acc :"<<v[1]<<endl;
     cout<<sal<<endl;
 
+    printf("%0.6f",dp[N]);
+
     //or
     // cout<<"Sal :"
     //         << "default precision (6): " << sal << '\n'

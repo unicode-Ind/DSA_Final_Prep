@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "../customIO.h"
 using namespace std;
 
 #define ll long long
@@ -22,6 +23,7 @@ void deletePeak_FromMaxHeap(vector<int> &v);  // O(logN)
 
 int main(int argc, char const *argv[])
 {
+	INPUT()
 	vector<int> heap;
 	int n,input;
 	cin>>n;
